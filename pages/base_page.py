@@ -14,3 +14,7 @@ class BasePage:
     def click_on_element(self, locator):
         element = self.find_element_with_wait(locator)
         element.click()
+
+    def send_keys(self, locator, key):
+        element = self.find_element_with_wait(locator)
+        element.send_keys(key)
