@@ -1,5 +1,7 @@
 import pytest
 from selenium import webdriver
+import data
+from pages.reset_pass_page import ResetPassPage
 
 
 @pytest.fixture(scope='function', params=['chrome', 'firefox'])
@@ -20,3 +22,10 @@ def driver(request):
     yield driver
 
     driver.quit()
+
+
+@pytest.fixture(scope='function')
+# @allure.title('Переход на главную и создание объекта MainPage')
+def reset_pass_page(driver):
+    driver.get(data.LOGIN_PAGE)
+    return ResetPassPage(driver)

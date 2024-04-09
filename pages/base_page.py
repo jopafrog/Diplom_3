@@ -30,3 +30,7 @@ class BasePage:
     def get_text_from_element(self, locator):
         element = self.find_element_with_wait(locator)
         return element.text
+
+    def get_attribute_value(self, locator, attribute_name: str):
+        element = self.find_element_with_wait(locator)
+        return element.get_attribute(attribute_name)
