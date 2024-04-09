@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 import data
+from pages.main_page import MainPage
 from pages.profile_page import ProfilePage
 from pages.reset_pass_page import ResetPassPage
 
@@ -42,3 +43,10 @@ def profile_page(driver):
     profile_page.enter_profile(email=data.TEST_USER_EMAIL, password=data.TEST_USER_PASS)
 
     return profile_page
+
+
+@pytest.fixture(scope='function')
+# @allure.title('Переход на главную и создание объекта MainPage')
+def main_page(driver):
+    driver.get(data.MAIN_PAGE)
+    return MainPage(driver)

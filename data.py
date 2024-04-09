@@ -1,4 +1,5 @@
 MAIN_PAGE = 'https://stellarburgers.nomoreparties.site/'
+ORDER_FEED_PAGE = 'https://stellarburgers.nomoreparties.site/feed'
 LOGIN_PAGE = 'https://stellarburgers.nomoreparties.site/login'
 PROFILE_PAGE = 'https://stellarburgers.nomoreparties.site/account/profile'
 

@@ -34,3 +34,10 @@ class BasePage:
     def get_attribute_value(self, locator, attribute_name: str):
         element = self.find_element_with_wait(locator)
         return element.get_attribute(attribute_name)
+
+    def element_exist(self, locator):
+        try:
+            self.driver.find_element(locator)
+            return True
+        finally:
+            return False
