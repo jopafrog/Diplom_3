@@ -1,4 +1,5 @@
 from locators.main_page_locators import MainPageLocators
+from locators.orders_feed_locators import OrdersFeedLocators
 from pages.base_page import BasePage
 
 
@@ -17,8 +18,8 @@ class MainPage(BasePage):
         return self.get_text_from_element(MainPageLocators.BUILDER_HEADER)
 
     def get_header_order_feed(self):
-        self.find_element_with_wait(MainPageLocators.ORDER_FEED_HEADER)
-        return self.get_text_from_element(MainPageLocators.ORDER_FEED_HEADER)
+        self.find_element_with_wait(OrdersFeedLocators.ORDER_FEED_HEADER)
+        return self.get_text_from_element(OrdersFeedLocators.ORDER_FEED_HEADER)
 
     def click_on_first_ingredient(self):
         self.click_on_element(MainPageLocators.FIRST_BUN)

@@ -1,5 +1,3 @@
-
-
 class TestMainPage:
     def test_open_builder_page_success(self, main_page):
         main_page.click_on_order_feed_link()
@@ -23,7 +21,7 @@ class TestMainPage:
 
         assert main_page.find_ingredient_details_window() is False
 
-    def test_drag_and_drop_top_bun_price_not_zero(self, main_page):
+    def test_drag_and_drop_top_bun_counter_not_zero(self, main_page):
         main_page.drag_bun_and_drop_in_order()
 
         assert main_page.get_bun_counter() == '2'
@@ -33,4 +31,3 @@ class TestMainPage:
         main_page_authorization.click_on_order_button()
 
         assert main_page_authorization.get_order_number() != 0
-

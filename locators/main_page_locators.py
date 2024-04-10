@@ -9,11 +9,11 @@ class MainPageLocators:
     BUILDER_HEADER = By.XPATH, './/h1[text()="Соберите бургер"]'
 
     ORDER_FEED_LINK = By.LINK_TEXT, 'Лента Заказов'
-    ORDER_FEED_HEADER = By.XPATH, './/h1[text()="Лента заказов"]'
 
     FIRST_BUN = By.XPATH, './/a[contains(@href, "/ingredient/")][1]'
     INGREDIENT_HEADER_WINDOW = By.XPATH, './/h2[text()="Детали ингредиента"]'
 
+    # Кнопка закрывающая окно деталей ингредиента
     CLOSE_WINDOW_INGREDIENT_BUTTON = By.XPATH, './/button[contains(@class, "Modal_modal__close_modified__3V5XS")][1]'
 
     # TOP_BUN = By.XPATH, './/div[contains(@class, "constructor-element_pos_top")]'  # Верхняя булка в конструкторе

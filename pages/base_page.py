@@ -37,7 +37,7 @@ class BasePage:
 
     def element_exist(self, locator):
         try:
-            self.driver.find_element(locator)
+            self.driver.find_element_with_wait(locator)
             return True
         finally:
             return False
@@ -48,5 +48,4 @@ class BasePage:
 
         action = ActionChains(self.driver)
         action.drag_and_drop(source_element, target_element)
-        action.pause(1)
         action.perform()
