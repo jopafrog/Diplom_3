@@ -50,3 +50,15 @@ def profile_page(driver):
 def main_page(driver):
     driver.get(data.MAIN_PAGE)
     return MainPage(driver)
+
+
+@pytest.fixture(scope='function')
+# @allure.title('Переход на главную и создание объекта MainPage')
+def main_page_authorization(driver):
+    driver.get(data.MAIN_PAGE)
+
+    profile_page = ProfilePage(driver)
+    profile_page.click_on_link_profile()
+    profile_page.enter_profile(email=data.TEST_USER_EMAIL, password=data.TEST_USER_PASS)
+
+    return MainPage(driver)

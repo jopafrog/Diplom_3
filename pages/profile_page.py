@@ -7,7 +7,7 @@ from pages.base_page import BasePage
 
 class ProfilePage(BasePage):
     def click_on_link_profile(self):
-        self.find_element_with_wait(MainPageLocators.PLACE_ORDER_BUTTON)
+        self.find_element_with_wait(MainPageLocators.ORDER_BUTTON)
         self.click_on_element(ProfilePageLocators.PROFILE_LINK)
 
     def click_on_history_orders(self):

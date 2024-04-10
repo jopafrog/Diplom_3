@@ -41,3 +41,12 @@ class BasePage:
             return True
         finally:
             return False
+
+    def drag_and_drop_element(self, source_locator, target_locator):
+        source_element = self.find_element_with_wait(source_locator)
+        target_element = self.find_element_with_wait(target_locator)
+
+        action = ActionChains(self.driver)
+        action.drag_and_drop(source_element, target_element)
+        action.pause(1)
+        action.perform()

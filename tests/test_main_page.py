@@ -22,3 +22,15 @@ class TestMainPage:
         main_page.close_ingredient_details_window()
 
         assert main_page.find_ingredient_details_window() is False
+
+    def test_drag_and_drop_top_bun_price_not_zero(self, main_page):
+        main_page.drag_bun_and_drop_in_order()
+
+        assert main_page.get_bun_counter() == '2'
+
+    def test_place_order_authorization_user_success(self, main_page_authorization):
+        main_page_authorization.drag_bun_and_drop_in_order()
+        main_page_authorization.click_on_order_button()
+
+        assert main_page_authorization.get_order_number() != 0
+
