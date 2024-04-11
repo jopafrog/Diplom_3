@@ -70,3 +70,15 @@ def main_page_authorization(driver):
 def orders_feed_page(driver):
     driver.get(data.ORDER_FEED_PAGE)
     return OrdersFeedPage(driver)
+
+
+@pytest.fixture(scope='function')
+# @allure.title('Переход на главную и создание объекта MainPage')
+def orders_feed_page_authorize(driver):
+    driver.get(data.MAIN_PAGE)
+
+    profile_page = ProfilePage(driver)
+    profile_page.click_on_link_profile()
+    profile_page.enter_profile(email=data.TEST_USER_EMAIL, password=data.TEST_USER_PASS)
+
+    return OrdersFeedPage(driver)
