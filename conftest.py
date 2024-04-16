@@ -1,11 +1,6 @@
 import allure
 import pytest
 from selenium import webdriver
-import data
-from pages.main_page import MainPage
-from pages.orders_feed_page import OrdersFeedPage
-from pages.profile_page import ProfilePage
-from pages.reset_pass_page import ResetPassPage
 
 
 @pytest.fixture(scope='function', params=['chrome', 'firefox'])
@@ -27,60 +22,3 @@ def driver(request):
     yield driver
 
     driver.quit()
-
-
-@pytest.fixture(scope='function')
-@allure.title('Переход на страницу входа')
-def reset_pass_page(driver):
-    driver.get(data.LOGIN_PAGE)
-    return ResetPassPage(driver)
-
-
-@pytest.fixture(scope='function')
-@allure.title('Переход на главную и авторизация пользователя')
-def profile_page(driver):
-    driver.get(data.MAIN_PAGE)
-
-    profile_page = ProfilePage(driver)
-    profile_page.click_on_link_profile()
-    profile_page.enter_profile(email=data.TEST_USER_EMAIL, password=data.TEST_USER_PASS)
-
-    return profile_page
-
-
-@pytest.fixture(scope='function')
-@allure.title('Переход на главную')
-def main_page(driver):
-    driver.get(data.MAIN_PAGE)
-    return MainPage(driver)
-
-
-@pytest.fixture(scope='function')
-@allure.title('Переход на главную и авторизация пользователя')
-def main_page_authorization(driver):
-    driver.get(data.MAIN_PAGE)
-
-    profile_page = ProfilePage(driver)
-    profile_page.click_on_link_profile()
-    profile_page.enter_profile(email=data.TEST_USER_EMAIL, password=data.TEST_USER_PASS)
-
-    return MainPage(driver)
-
-
-@pytest.fixture(scope='function')
-@allure.title('Переход на страницу Ленты заказов')
-def orders_feed_page(driver):
-    driver.get(data.ORDER_FEED_PAGE)
-    return OrdersFeedPage(driver)
-
-
-@pytest.fixture(scope='function')
-@allure.title('Переход на главную и авторизация пользователя')
-def orders_feed_page_authorize(driver):
-    driver.get(data.MAIN_PAGE)
-
-    profile_page = ProfilePage(driver)
-    profile_page.click_on_link_profile()
-    profile_page.enter_profile(email=data.TEST_USER_EMAIL, password=data.TEST_USER_PASS)
-
-    return OrdersFeedPage(driver)

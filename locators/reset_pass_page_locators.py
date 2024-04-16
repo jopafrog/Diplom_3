@@ -7,7 +7,6 @@ class ResetPassPageLocators:
     RESET_PASS_HEADER = By.XPATH, './/h2[text()="Восстановление пароля"]'
 
     SECRET_KEY_FIELD = By.XPATH, './/label[text()="Введите код из письма"]'
-    # SECRET_KEY_INPUT = By.XPATH, './/label[text()="Введите код из письма"]/parent::div/input'
 
     # Кнопка отображения пароля
     SHOW_PASS_BUTTON = By.XPATH, './/div[contains(@class,"icon-action")]'

@@ -1,5 +1,4 @@
 import allure
-import data
 from locators.main_page_locators import MainPageLocators
 from locators.orders_feed_locators import OrdersFeedLocators
 from locators.profile_page_locators import ProfilePageLocators
@@ -9,12 +8,15 @@ from pages.base_page import BasePage
 class OrdersFeedPage(BasePage):
     @allure.step('Нажать на ссылку Лента заказов')
     def click_on_orders_feed(self):
-        self.wait(3)
+        self.find_element_with_wait(MainPageLocators.BUILDER_HEADER)
+        self.click_on_element(MainPageLocators.ORDER_FEED_LINK)
+
+    @allure.step('Нажать на ссылку Лента заказов, из Личного профиля')
+    def go_to_orders_feed(self):
         self.click_on_element(MainPageLocators.ORDER_FEED_LINK)
 
     @allure.step('Нажать на ссылку Конструктор')
     def click_on_builder(self):
-        self.wait(3)
         self.click_on_element(MainPageLocators.BUILDER_LINK)
 
     @allure.step('Нажать на первый заказ в Ленте')
@@ -31,22 +33,16 @@ class OrdersFeedPage(BasePage):
 
     @allure.step('Закрыть окно заказа')
     def close_details_order_window(self):
-        self.wait(2)
         self.click_on_element(OrdersFeedLocators.CLOSE_WINDOW_ORDER_BUTTON)
 
     @allure.step('Получить номер последнего сделанного заказа пользователем')
     def get_lust_number_order(self):
-        self.wait(1)
         self.click_on_element(ProfilePageLocators.PROFILE_LINK)
-        self.click_on_element(ProfilePageLocators.PROFILE_LINK)
-        self.wait(1)
         self.click_on_element(ProfilePageLocators.HISTORY_LINK)
-        self.wait(1)
         return self.get_text_from_element(ProfilePageLocators.LAST_ORDER)
 
     @allure.step('Получить номер нового заказа')
     def get_new_order_number(self):
-        self.wait(2)
         return self.get_text_from_element(MainPageLocators.ORDER_NUMBER)
 
     @allure.step('Получить номер заказа в Лента заказов')
@@ -55,6 +51,7 @@ class OrdersFeedPage(BasePage):
 
     @allure.step('Создать заказ')
     def create_order(self):
+        self.find_element_with_wait(MainPageLocators.BUILDER_HEADER)
         self.drag_and_drop_element(MainPageLocators.FIRST_BUN, MainPageLocators.DROP_BASKET_AREA)
         self.click_on_element(MainPageLocators.ORDER_BUTTON)
 
@@ -70,5 +67,11 @@ class OrdersFeedPage(BasePage):
 
     @allure.step('Получить список заказов в работе')
     def get_orders_in_work(self):
-        self.wait(2)
+        self.find_element_with_wait(OrdersFeedLocators.EMPTY_ORDERS_IN_WORK)
+        self.wait_disappear_element(OrdersFeedLocators.EMPTY_ORDERS_IN_WORK)
         return self.get_text_from_element(OrdersFeedLocators.ORDERS_IN_WORK)
+
+    @allure.step('Ожидание формирования номера заказа')
+    def wait_order_placed(self):
+        self.find_element_with_wait(OrdersFeedLocators.ORDER_WINDOW_OPENED)
+        self.wait_disappear_element(OrdersFeedLocators.ORDER_WINDOW_OPENED)

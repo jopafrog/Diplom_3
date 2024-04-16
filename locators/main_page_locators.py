@@ -8,7 +8,7 @@ class MainPageLocators:
     BUILDER_LINK = By.LINK_TEXT, 'Конструктор'
     BUILDER_HEADER = By.XPATH, './/h1[text()="Соберите бургер"]'
 
-    ORDER_FEED_LINK = By.LINK_TEXT, 'Лента Заказов'
+    ORDER_FEED_LINK = By.XPATH, './/p[text()="Лента Заказов"]'
 
     # Первая булка в конструкторе
     FIRST_BUN = By.XPATH, '(.//a[contains(@href, "/ingredient/")])[1]'

@@ -12,6 +12,9 @@ class BasePage:
 
         return self.driver.find_element(*locator)
 
+    def wait_disappear_element(self, locator):
+        WebDriverWait(self.driver, 10).until(expected_conditions.invisibility_of_element_located(locator))
+
     def click_on_element(self, locator):
         element = self.find_element_with_wait(locator)
 
@@ -49,11 +52,3 @@ class BasePage:
         action = ActionChains(self.driver)
         action.drag_and_drop(source_element, target_element)
         action.perform()
-
-    def wait(self, seconds):
-        action = ActionChains(self.driver)
-        action.pause(seconds)
-        action.perform()
-
-    def go_to_page(self, page):
-        self.driver.get(page)

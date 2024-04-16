@@ -1,7 +1,7 @@
 MAIN_PAGE = 'https://stellarburgers.nomoreparties.site/'
-ORDER_FEED_PAGE = 'https://stellarburgers.nomoreparties.site/feed'
-LOGIN_PAGE = 'https://stellarburgers.nomoreparties.site/login'
-PROFILE_PAGE = 'https://stellarburgers.nomoreparties.site/account/profile'
+ORDER_FEED = 'feed'
+LOGIN = 'login'
+PROFILE = 'profile'
 
 # Данные тестового пользователя
 TEST_USER_NAME = 'apudovkin_qa5_999'
